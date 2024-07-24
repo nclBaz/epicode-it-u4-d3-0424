@@ -30,9 +30,8 @@ public class Main {
 		// --------------------------------- COMPARAZIONE TRA 2 OGGETTI ----------------------------------
 
 		Student giacomo = new Student("Giacomo", "Poretti", false, TipoStudente.FRONTEND);
-		giacomo.id = 1;
 		Student giacomo2 = new Student("Giacomo", "Poretti", false, TipoStudente.FRONTEND);
-		giacomo2.id = 1;
+
 		Student giacomo3 = giacomo;
 
 		// Se utilizzo il doppio uguale mi verranno confrontate le celle di memoria, quindi 2 oggetti saranno uguali solo se nella stessa cella
@@ -48,6 +47,27 @@ public class Main {
 		// Se non ci piace questo comportamento posso SOVRASCRIVERE il metodo .toString()
 		System.out.println(giacomo);
 		System.out.println(giacomo2);
+
+		// --------------------------------- INCAPSULAMENTO ----------------------------------
+		// Se tutti gli attributi della classe fossero PUBLIC, vorrebbe dire che questi potrebbero
+		// essere acceduti dal mondo esterno (main) anche in maniera potenzialmente dannosa (soprattutto in scrittura)
+
+		// Una buona idea quindi è quella di regolare l'accesso mettendo PRIVATE al posto di public
+		// System.out.println(giacomo.name); <-- Essendo name private non posso più accedervi in maniera diretta
+		// giacomo.name = "Ciccio"; <-- neanche in scrittura posso accedervi
+
+		// Per avere controllo su letture e scritture posso implementare nella classe i metodi GETTER & SETTER
+		// I getter mi servono per leggere un certo attributo
+		// I setter mi servono per sovrascrivere il valore di un certo attributo
+		// Ciò mi consente di stabilire quali attributi possano venir letti e quali scritti
+		// NON E' OBBLIGATORIO CREARE SETTER E GETTER PER TUTTI GLI ATTRIBUTI
+
+		// ES:
+		/*System.out.println(giacomo.getId()); // L'id di Giacomo è leggibile...
+		System.out.println(giacomo.setId()); // ...però nessuno può cambiarne il valore perché non ho creato il setter*/
+
+		// Ulteriore beneficio dei setter inoltre è quello di poter anche eseguire della logica per controllare i dati
+		// che ci vengono forniti. ES: hai inserito un nome non valido? non te l'accetto
 
 	}
 

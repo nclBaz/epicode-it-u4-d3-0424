@@ -7,13 +7,16 @@ import java.util.Random;
 
 public class Student {
 	// ATTRIBUTI STATICI (attributi di classe, cioè non serve un oggetto per accedervi)
-	public static int numStudentiCreati = 0;
+	private static int numStudentiCreati = 0;
+	// public String surname; // Se metto PUBLIC allora chiunque in tutta l'app potrà accedere a questo membro
+	// String name; // Se non metto niente l'accessibilità viene definita come PACKAGE-FRIENDLY ovvero
+	// solo le classi all'interno dello stesso package possono accedere a questo membro
 	// ATTRIBUTI (caratteristiche di tutti gli studenti)
-	public int id;
-	public String name;
-	public String surname;
-	public boolean isFullStack;
-	public TipoStudente tipoStudente;
+	private int id; // Se è PRIVATE si può leggere/scrivere solo dall'interno di questa classe
+	private String name;
+	private String surname;
+	private boolean isFullStack;
+	private TipoStudente tipoStudente;
 
 	// COSTRUTTORI (metodi speciali che mi servono a creare un nuovo Studente)
 	// I COSTRUTTORE
@@ -80,5 +83,49 @@ public class Student {
 				", isFullStack=" + isFullStack +
 				", tipoStudente=" + tipoStudente +
 				'}';
+	}
+
+	// GETTERS & SETTERS
+
+	public int getId() { // Per l'id faccio solo il getter perché non voglio sia sovrascrivibile
+		return id;
+	}
+
+	public String getName() { // Per il nome faccio sia getter che setter perché mi sta bene poter sia
+		// leggere che sovrascrivere il nome
+		return name;
+	}
+
+	public void setName(String name) {
+		if (name.length() >= 3)
+			this.name = name;
+		else System.out.println("Nome troppo corto");
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+
+	public void setSurname(String surname) {
+		if (surname.length() >= 3)
+			this.surname = name;
+		else System.out.println("Nome troppo corto");
+	}
+
+	public boolean isFullStack() {
+		return isFullStack;
+	}
+
+	public void setFullStack(boolean fullStack) {
+		isFullStack = fullStack;
+	}
+
+	public TipoStudente getTipoStudente() {
+		return tipoStudente;
+	}
+
+	public void setTipoStudente(TipoStudente tipoStudente) {
+		this.tipoStudente = tipoStudente;
 	}
 }
